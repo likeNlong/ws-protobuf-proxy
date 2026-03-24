@@ -1,16 +1,38 @@
 # 🔌 WS-Protobuf-Proxy
 
+
+
+
+
+
+
+
+
 > **让 Burp Suite 像看 JSON 一样看 WebSocket Protobuf 流量**
 
+
+
+
+
+<img src="https://mc-imgup.oss-cn-beijing.aliyuncs.com/%E6%89%AB%E7%A0%81_%E6%90%9C%E7%B4%A2%E8%81%94%E5%90%88%E4%BC%A0%E6%92%AD%E6%A0%B7%E5%BC%8F-%E6%A0%87%E5%87%86%E8%89%B2%E7%89%88.png" alt="扫码_搜索联合传播样式-标准色版" style="zoom: 25%;" />
+
+
+
 Cursor Agent Skill —— 自动从前端代码 ZIP 中提取 Protobuf 定义，生成双层 mitmproxy 代理脚本，Protobuf ↔ JSON 实时互转，Burp 中直接查看、编辑、重放。
+
+
 
 ---
 
 ## 🤔 解决什么问题
 
+
+
 WebSocket + Protobuf 是游戏/IM/实时应用的常见方案，但 Burp 里只能看到一坨二进制——看不懂、改不了、测不动。
 
 本工具在客户端和 Burp 之间插入两层 mitmproxy，自动双向转换，Burp 中全程 JSON 明文。
+
+
 
 ## 🏗️ 架构
 
@@ -23,13 +45,19 @@ APP ──(PB)──> mitmproxy_A [:8888] ──(JSON)──> Burp Suite ──(
 | **mitmproxy_A** | 8888 | 上游指向 Burp，PB↔JSON 互转 |
 | **mitmproxy_B** | 9999 | 直连服务器，JSON↔PB 互转 |
 
+
+
 ## ⚠️ 前置准备
+
+
 
 ### 1️⃣ 安装依赖
 
 ```bash
 pip install mitmproxy grpcio-tools protobuf
 ```
+
+
 
 ### 2️⃣ 证书！证书！证书！
 
@@ -61,6 +89,8 @@ git clone <repo-url> ~/.cursor/skills/ws-protobuf-proxy
 前端代码包：https://example.com/game-frontend.zip
 Burp代理地址：127.0.0.1:8080
 ```
+
+
 
 | 参数 | 说明 | 示例 |
 |------|------|------|
